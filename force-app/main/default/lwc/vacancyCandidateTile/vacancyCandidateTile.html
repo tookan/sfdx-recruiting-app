@@ -1,0 +1,29 @@
+<template>
+    <div class={tileClass} onclick={handleClick}>
+
+        <div class="slds-card__header">
+            <div class=slds-media__figure>
+                <lightning-icon
+                        icon-name="standard:partners"
+                        alternative-text="Proposed Candidate">
+                </lightning-icon>
+                <h3 class="slds-tile__title">
+                    <a href={recordLink}>{tileLabel}</a>
+                </h3>
+            </div>
+
+            <div class="header-buttons">
+                    <lightning-button variant="neutral" label="Approve" id="accept-request" onclick={sendApprovalEvent}></lightning-button>
+                    <lightning-button variant="neutral" label="Reject" id="reject-request" onclick={sendApprovalEvent}></lightning-button>
+            </div>
+        </div>
+        <div class="slds-media__body" >
+            <div class="subtile">
+                <c-candidate-tile candidate={vacCan.kk_recruiting__Candidate_Pivot__r}></c-candidate-tile>
+            </div>
+            <div class="subtile">
+                <c-vacancy-tile vacancy={vacCan}></c-vacancy-tile>
+            </div>
+        </div>
+    </div>
+</template>

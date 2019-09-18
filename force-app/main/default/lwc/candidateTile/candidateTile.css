@@ -1,0 +1,19 @@
+article {
+    padding: .5em;
+}
+
+div.slds-card div.slds-card.card-selected {
+     border-radius: .5rem;
+     border-width: 1px;
+     border-style: solid;
+}
+
+div.slds-card{
+    border-color: rgb(221, 219, 218);
+    box-shadow: 0 0 .3em rgb(197, 196, 196);
+}
+
+div.slds-card.card-selected {
+    border-color: rgb(136, 172, 240);
+    box-shadow: 0 0 .4em rgb(0, 89, 255);
+}

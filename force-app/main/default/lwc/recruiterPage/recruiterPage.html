@@ -1,0 +1,19 @@
+<template>
+    <lightning-card title="Manage Vacancies Assignment">
+
+        <lightning-button slot="actions" if:true={isSubmitShown} label="Submit Vacancy" onclick={submitVacancy}></lightning-button>
+
+        <lightning-layout multiple-rows="true">
+            <lightning-layout-item size="6">
+                <c-vacancy-list reload-list-trigger={reloadVacanciesTrigger} onvacancychosen={onVacancyChosen}></c-vacancy-list>
+            </lightning-layout-item>
+
+            <lightning-layout-item size="6" if:true={isCandidateListRendered}>
+                <c-candidate-list selected-records-id={selectedCandidates} oncandidatechosen={onCandidateChosen} ></c-candidate-list>
+            </lightning-layout-item>
+            <lightning-layout-item size="6" if:false={isCandidateListRendered} title="Select Vacancy">
+
+            </lightning-layout-item>
+        </lightning-layout>
+    </lightning-card>
+</template>

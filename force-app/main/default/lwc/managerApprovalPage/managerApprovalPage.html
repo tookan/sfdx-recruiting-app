@@ -1,0 +1,28 @@
+<template>
+    <lightning-card title="Proposed Candidates" >
+        <lightning-button if:true={isSubmitButtonsRendered} label="Approve Selected" slot="actions" onclick={acceptApprovals}></lightning-button>
+        <lightning-button if:true={isSubmitButtonsRendered} label="Reject Selected" slot="actions" onclick={rejectApprovals}></lightning-button>
+        <div class="slds-card__body_inner">
+            <lightning-input type="search" onchange={handleSearch} variant="label-hidden"
+                             class="slds-m-bottom_small" label="Search"  value={searchTerm}>
+            </lightning-input>
+            <template if:true={vacCanList}>
+                <lightning-layout multiple-rows="true" class={dynamicClass}>
+                    <template for:each={vacCanList} for:item="vacCan" >
+                        <lightning-layout-item key={vacCan.Id} size="12">
+                            <div class="custom-box slds-p-around_medium">
+                                <c-vacancy-candidate-tile onsendapprovalevent={handleTileApprovalRequest} onvaccanchosen={handleRecordChose} vac-can={vacCan}></c-vacancy-candidate-tile>
+                            </div>
+                        </lightning-layout-item>
+                    </template>
+                </lightning-layout>
+            </template>
+            <template if:false={vacCanList}>
+                <div class="slds-align_absolute-center slds-m-vertical_small">
+                    There are no candidates proposed for vacancies yet
+                </div>
+            </template>
+        </div>
+
+    </lightning-card>
+</template>

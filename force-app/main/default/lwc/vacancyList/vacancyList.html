@@ -1,0 +1,25 @@
+<template>
+    <lightning-card title="My Vacancies" >
+        <div class="slds-card__body_inner">
+            <!-- Start bear list -->
+            <lightning-input type="search" onchange={handleSearch} variant="label-hidden"
+                             class="slds-m-bottom_small" label="Search"  value={searchTerm}>
+            </lightning-input>
+            <template if:true={vacancyList}>
+                <lightning-layout multiple-rows="true" >
+                    <template for:each={vacancyList} for:item="vacancy">
+                        <lightning-layout-item key={vacancy.Id} size="6" class="slds-p-around_x-small">
+                            <c-vacancy-tile onvacancychosen={handleVacancyChose} vacancy={vacancy}></c-vacancy-tile>
+                        </lightning-layout-item>
+                    </template>
+                </lightning-layout>
+            </template>
+            <template if:false={isHasResults}>
+                <div class="slds-align_absolute-center slds-m-vertical_small">
+                    No vacancies found
+                </div>
+            </template>
+        </div>
+
+    </lightning-card>
+</template>

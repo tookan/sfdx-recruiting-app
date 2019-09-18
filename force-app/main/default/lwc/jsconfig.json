@@ -1,0 +1,38 @@
+{
+    "compilerOptions": {
+        "experimentalDecorators": true,
+        "baseUrl": ".",
+        "paths": {
+            "c/candidateList": [
+                "candidateList/candidateList.js"
+            ],
+            "c/candidateTile": [
+                "candidateTile/candidateTile.js"
+            ],
+            "c/managerApprovalPage": [
+                "managerApprovalPage/managerApprovalPage.js"
+            ],
+            "c/recruiterPage": [
+                "recruiterPage/recruiterPage.js"
+            ],
+            "c/vacancyCandidateTile": [
+                "vacancyCandidateTile/vacancyCandidateTile.js"
+            ],
+            "c/vacancyList": [
+                "vacancyList/vacancyList.js"
+            ],
+            "c/vacancyTile": [
+                "vacancyTile/vacancyTile.js"
+            ]
+        }
+    },
+    "include": [
+        "**/*",
+        "../../../../.sfdx/typings/lwc/**/*.d.ts"
+    ],
+    "typeAcquisition": {
+        "include": [
+            "jest"
+        ]
+    }
+}

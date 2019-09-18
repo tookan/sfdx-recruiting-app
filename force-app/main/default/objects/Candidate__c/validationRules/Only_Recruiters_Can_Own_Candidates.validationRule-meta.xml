@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Only_Recruiters_Can_Own_Candidates</fullName>
+    <active>false</active>
+    <errorConditionFormula>ISNULL( Recruiter__c)  ||  (   Recruiter__r.UserRole.Name  &lt;&gt; &#39;Recruiter&#39; )</errorConditionFormula>
+    <errorMessage>Only Recruiters can be assigned for &quot;Recruiter&quot; value</errorMessage>
+</ValidationRule>

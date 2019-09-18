@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LastName_required</fullName>
+    <active>true</active>
+    <errorConditionFormula>ISNULL(LastName__c) || ISBLANK(LastName__c)</errorConditionFormula>
+    <errorDisplayField>LastName__c</errorDisplayField>
+    <errorMessage>Field required</errorMessage>
+</ValidationRule>

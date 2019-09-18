@@ -1,0 +1,14 @@
+<aura:component implements="force:hasRecordId,force:lightningQuickActionWithoutHeader" controller="VacancyController">
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:attribute name="isUpdated" type="Boolean" default="false"/>
+    <aura:attribute name="recordId" type="String" />
+    <aura:if isTrue="{!v.isUpdated}">
+        <h3>Vacancy Canceled</h3>
+    </aura:if>
+    <div style="height: 50px;">
+            <div class="slds-docked-form-footer">
+              <button type="button" class="slds-button slds-button_neutral">Cancel</button>
+              <button type="button" class="slds-button slds-button_brand">Save</button>
+            </div>
+    </div>
+</aura:component>

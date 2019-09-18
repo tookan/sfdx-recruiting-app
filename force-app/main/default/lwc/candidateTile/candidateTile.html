@@ -1,0 +1,36 @@
+<template>
+    <div class={tileClass} onclick={handleClick}>
+        <article class="slds-tile slds-media slds-tile--board">
+            <div class="slds-media__figure">
+                <lightning-icon icon-name="standard:avatar"></lightning-icon>
+            </div>
+            <div class="slds-media__body">
+                <h3 class="slds-tile__title slds-truncate" title={candidateFullName}>
+                    <a href={recordLink}>{candidateFullName}</a>
+                </h3>
+                <div class="slds-tile__detail">
+                    <dl class="slds-list_horizontal slds-wrap">
+                        <dt class="slds-item_label slds-text-color_weak slds-truncate" title="Candidate ID">Candidate
+                            ID:
+                        </dt>
+                        <dd class="slds-item_detail slds-truncate" title={candidate.Name}>{candidate.Name}
+                        </dd>
+                        <dt class="slds-item_label slds-text-color_weak slds-truncate" title="Email">Email:
+                        </dt>
+                        <dd class="slds-item_detail slds-truncate" title={candidate.kk_recruiting__Email__c}>
+                            <a href="mailto:{candidate.kk_recruiting__Email__c}">{candidate.kk_recruiting__Email__c}</a>
+                        </dd>
+                        <dt class="slds-item_label slds-text-color_weak slds-truncate" title="Location">Location:
+                        </dt>
+                        <dd class="slds-item_detail slds-truncate" title={candidate.kk_recruiting__Location__c}>{candidate.kk_recruiting__Location__c}
+                        </dd>
+                        <dt class="slds-item_label slds-text-color_weak slds-truncate" title="Status">Status:
+                        </dt>
+                        <dd class="slds-item_detail slds-truncate" title={candidate.kk_recruiting__Status__c}>{candidate.kk_recruiting__Status__c}
+                        </dd>
+                    </dl>
+                </div>
+            </div>
+        </article>
+    </div>
+</template>
