@@ -2,7 +2,13 @@ abstract public class RequestHelper
 {
     public Integer skipRecordsCount {get;set;}
     public Integer takeRecordsCount {get;set;}
-    public String searchTerm {get;set;}
+    public String searchTerm {get; set  {
+            if(value.length() >= CustomObjectController.SEARCH_TERM_MIN_LENGTH)
+            {
+                searchTerm = '*' + value + '*';
+            }
+        }
+    }
 
     public abstract List<SObject> listRecordsRequest();
 
