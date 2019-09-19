@@ -78,5 +78,12 @@
         <members>*</members>
         <name>Dashboard</name>
     </types>
+    <types>
+        <members>Recruiting_All_Fields_Access</members>
+        <members>Recruiting_App_Lead_Manager</members>
+        <members>Recruiting_App_Recruiter</members>
+        <members>Recruiting_App_Recruiting_Manager</members>
+        <name>PermissionSet</name>
+    </types>
     <version>46.0</version>
 </Package>
