@@ -13,8 +13,8 @@ public with sharing class CandidateController {
 
         public override List<SObject> listRecordsRequest() {
             return [
-                    SELECT Id, Name, FirstName__c, LastName__c, Comments__c, Email__c, Status__c, OwnerId, Location__c
-                    FROM Candidate__c
+                    SELECT Id, Name, kk_recruiting__FirstName__c, kk_recruiting__LastName__c, kk_recruiting__Comments__c, kk_recruiting__Email__c, kk_recruiting__Status__c, OwnerId, kk_recruiting__Location__c
+                    FROM kk_recruiting__Candidate__c
                     WHERE Status__c = :CandidateController.VALIDATED_BY_HR_STATUS
                     LIMIT :takeRecordsCount
                     OFFSET :skipRecordsCount
@@ -26,7 +26,10 @@ public with sharing class CandidateController {
                     FIND :searchTerm
                     IN ALL FIELDS
                             RETURNING
-                            Candidate__c(Id, Name, FirstName__c, LastName__c, Comments__c, Email__c, Status__c, OwnerId, Location__c
+                            kk_recruiting__Candidate__c(Id, Name, kk_recruiting__FirstName__c, 
+                                        kk_recruiting__LastName__c, kk_recruiting__Comments__c, 
+                                        kk_recruiting__Email__c, kk_recruiting__Status__c, OwnerId, 
+                                        kk_recruiting__Location__c
                                     WHERE Status__c = :CandidateController.VALIDATED_BY_HR_STATUS)
             ];
 
