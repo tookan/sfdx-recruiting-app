@@ -33,6 +33,13 @@ trigger VacancyCandidateTrigger on VacancyCandidate__c (before update, before in
         VacancyCandidateHelper.closeVacancies(approvedVacCan);
     }
 
+    /*====================
+    Before UPDATE section
+    - return vacancies to recruiters
+      if no vacancy-candidate records waiting 
+      for approval remain 
+    ======================*/
+
     if(Trigger.isAfter && Trigger.isUpdate)
     {
         List<String> usedVacanciesId = new List<String>();

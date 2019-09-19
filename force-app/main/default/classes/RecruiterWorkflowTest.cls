@@ -54,7 +54,7 @@ public class RecruiterWorkflowTest {
     private static void testCandidateControllerListRecords()
     {
         Test.startTest();
-            String candidatesListJSON = CandidateController.listRecords('', 1);
+            String candidatesListJSON = CandidateController.listRecords('', 1, 1);
         Test.stopTest();
 
         System.assertEquals(true, isResponseListHasRecords(candidatesListJSON));
@@ -64,7 +64,7 @@ public class RecruiterWorkflowTest {
     private static void testCandidateControllerSearchRecords()
     {
         Test.startTest();
-            String candidatesListJSON = CandidateController.listRecords('Mock', 1);
+            String candidatesListJSON = CandidateController.listRecords('Mock', 1, 1);
         Test.stopTest();
 
         //System.assertEquals(true, isResponseListHasRecords(candidatesListJSON));
@@ -74,7 +74,7 @@ public class RecruiterWorkflowTest {
     private static void testVacancyControllerListRecords()
     {
         Test.startTest();
-            String vacancyListJSON = VacancyController.listRecords('', 1);
+            String vacancyListJSON = VacancyController.listRecords('', 1, 1);
         Test.stopTest();
 
         System.assertEquals(true, isResponseListHasRecords(vacancyListJSON));
@@ -84,7 +84,7 @@ public class RecruiterWorkflowTest {
     private static void testVacancyControllerSearchRecords()
     {
         Test.startTest();
-            String vacancyListJSON = VacancyController.listRecords('Mock', 1);
+            String vacancyListJSON = VacancyController.listRecords('Mock', 1, 1);
         Test.stopTest();
 
        // System.assertEquals(true, isResponseListHasRecords(vacancyListJSON));

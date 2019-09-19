@@ -98,7 +98,7 @@ private class ManagerWorkflowTest {
     private static void testVacancyCandidateListRecords()
     {
         Test.startTest();
-            String candidatesListJSON = VacancyCandidateController.listRecords('', 1);
+            String candidatesListJSON = VacancyCandidateController.listRecords('', 1, 1);
         Test.stopTest();
 
         System.assertEquals(true, isResponseListHasRecords(candidatesListJSON));
@@ -108,7 +108,7 @@ private class ManagerWorkflowTest {
     private static void testVacancyCandidateSearchRecords()
     {
         Test.startTest();
-            String candidatesListJSON = VacancyCandidateController.listRecords('Mock', 1);
+            String candidatesListJSON = VacancyCandidateController.listRecords('Mock', 1, 1);
         Test.stopTest();
 
         //System.assertEquals(true, isResponseListHasRecords(candidatesListJSON));
