@@ -2,7 +2,7 @@
 <Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
     <fieldUpdates>
         <fullName>Set_Approved_to_false</fullName>
-        <field>Approved__c</field>
+        <field>kk_recruiting__Approved__c</field>
         <literalValue>0</literalValue>
         <name>Set Approved to false</name>
         <notifyAssignee>false</notifyAssignee>
@@ -11,7 +11,7 @@
     </fieldUpdates>
     <fieldUpdates>
         <fullName>Set_Approved_to_true</fullName>
-        <field>Processed__c</field>
+        <field>kk_recruiting__Processed__c</field>
         <literalValue>1</literalValue>
         <name>Set Approved to true</name>
         <notifyAssignee>false</notifyAssignee>
@@ -20,7 +20,7 @@
     </fieldUpdates>
     <fieldUpdates>
         <fullName>Set_Processed_to_false</fullName>
-        <field>Processed__c</field>
+        <field>kk_recruiting__Processed__c</field>
         <literalValue>0</literalValue>
         <name>Set Processed to false</name>
         <notifyAssignee>false</notifyAssignee>
@@ -29,7 +29,7 @@
     </fieldUpdates>
     <fieldUpdates>
         <fullName>Update_Approved_to_True</fullName>
-        <field>Approved__c</field>
+        <field>kk_recruiting__Approved__c</field>
         <literalValue>1</literalValue>
         <name>Update Approved to True</name>
         <notifyAssignee>false</notifyAssignee>
@@ -38,7 +38,7 @@
     </fieldUpdates>
     <fieldUpdates>
         <fullName>Update_processed</fullName>
-        <field>Processed__c</field>
+        <field>kk_recruiting__Processed__c</field>
         <literalValue>1</literalValue>
         <name>Update processed</name>
         <notifyAssignee>false</notifyAssignee>

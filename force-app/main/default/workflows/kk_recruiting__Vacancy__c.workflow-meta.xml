@@ -2,7 +2,7 @@
 <Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
     <fieldUpdates>
         <fullName>Status_to_closed</fullName>
-        <field>Status__c</field>
+        <field>kk_recruiting__Status__c</field>
         <literalValue>Closed</literalValue>
         <name>Status to closed</name>
         <notifyAssignee>false</notifyAssignee>
@@ -12,7 +12,7 @@
     <fieldUpdates>
         <fullName>Update_Record_Type</fullName>
         <field>RecordTypeId</field>
-        <lookupValue>Closed</lookupValue>
+        <lookupValue>kk_recruiting__Closed</lookupValue>
         <lookupValueType>RecordType</lookupValueType>
         <name>Update Record Type</name>
         <notifyAssignee>false</notifyAssignee>

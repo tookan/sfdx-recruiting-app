@@ -6,10 +6,6 @@
         <submitter>Recruiter</submitter>
         <type>role</type>
     </allowedSubmitters>
-    <allowedSubmitters>
-        <submitter>konstantin.kukhtinov@gmail.com.sample</submitter>
-        <type>user</type>
-    </allowedSubmitters>
     <approvalPageFields>
         <field>Name</field>
         <field>kk_recruiting__Candidate__c</field>

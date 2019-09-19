@@ -7,7 +7,7 @@
         <formFactor>Small</formFactor>
         <skipRecordTypeSelect>false</skipRecordTypeSelect>
         <type>Flexipage</type>
-        <pageOrSobjectType>Vacancy__c</pageOrSobjectType>
+        <pageOrSobjectType>kk_recruiting__Vacancy__c</pageOrSobjectType>
     </actionOverrides>
     <actionOverrides>
         <actionName>View</actionName>
@@ -16,7 +16,7 @@
         <formFactor>Large</formFactor>
         <skipRecordTypeSelect>false</skipRecordTypeSelect>
         <type>Flexipage</type>
-        <pageOrSobjectType>Vacancy__c</pageOrSobjectType>
+        <pageOrSobjectType>kk_recruiting__Vacancy__c</pageOrSobjectType>
     </actionOverrides>
     <brand>
         <headerColor>#911212</headerColor>
@@ -29,8 +29,8 @@
     <label>Recruiting</label>
     <navType>Standard</navType>
     <tabs>Recruiting_home_page</tabs>
-    <tabs>Candidate__c</tabs>
-    <tabs>Vacancy__c</tabs>
+    <tabs>kk_recruiting__Candidate__c</tabs>
+    <tabs>kk_recruiting__Vacancy__c</tabs>
     <tabs>standard-Dashboard</tabs>
     <tabs>Propose_Candidates</tabs>
     <tabs>Candidates_Approval</tabs>

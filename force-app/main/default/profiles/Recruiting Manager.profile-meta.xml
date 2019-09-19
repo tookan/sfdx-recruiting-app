@@ -1,141 +1,133 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Profile xmlns="http://soap.sforce.com/2006/04/metadata">
     <applicationVisibilities>
-        <application>Recruiting</application>
+        <application>kk_recruiting__Recruiting</application>
         <default>true</default>
         <visible>true</visible>
     </applicationVisibilities>
     <classAccesses>
-        <apexClass>CandidateController</apexClass>
+        <apexClass>kk_recruiting__CandidateController</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>CustomObjectController</apexClass>
+        <apexClass>kk_recruiting__CustomObjectController</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>ManagerWorkflowTest</apexClass>
+        <apexClass>kk_recruiting__ManagerWorkflowTest</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>PaginatedResponse</apexClass>
+        <apexClass>kk_recruiting__PaginatedResponse</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>RecruiterWorkflowTest</apexClass>
+        <apexClass>kk_recruiting__RecruiterWorkflowTest</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>RecruitingController</apexClass>
+        <apexClass>kk_recruiting__RecruitingController</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>RecruitingObjectsFactory</apexClass>
+        <apexClass>kk_recruiting__RecruitingObjectsFactory</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>RequestHelper</apexClass>
+        <apexClass>kk_recruiting__RequestHelper</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>VacancyCandidateController</apexClass>
+        <apexClass>kk_recruiting__VacancyCandidateController</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>VacancyCandidateHelper</apexClass>
+        <apexClass>kk_recruiting__VacancyCandidateHelper</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>VacancyController</apexClass>
+        <apexClass>kk_recruiting__VacancyController</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>VacancyHelper</apexClass>
+        <apexClass>kk_recruiting__VacancyHelper</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <custom>true</custom>
     <fieldPermissions>
         <editable>false</editable>
-        <field>Candidate__c.Comments__c</field>
+        <field>kk_recruiting__Candidate__c.kk_recruiting__Comments__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>Candidate__c.Email__c</field>
+        <field>kk_recruiting__Candidate__c.kk_recruiting__Email__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>Candidate__c.FirstName__c</field>
+        <field>kk_recruiting__Candidate__c.kk_recruiting__FirstName__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>Candidate__c.LastName__c</field>
+        <field>kk_recruiting__Candidate__c.kk_recruiting__LastName__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>Candidate__c.Location__c</field>
+        <field>kk_recruiting__Candidate__c.kk_recruiting__Location__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>Candidate__c.Recruiter__c</field>
+        <field>kk_recruiting__Candidate__c.kk_recruiting__Recruiter__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>Candidate__c.Salary__c</field>
+        <field>kk_recruiting__Candidate__c.kk_recruiting__Salary__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>Candidate__c.Status__c</field>
+        <field>kk_recruiting__Candidate__c.kk_recruiting__Status__c</field>
         <readable>false</readable>
     </fieldPermissions>
+    
     <fieldPermissions>
         <editable>true</editable>
-        <field>User.Account_Type__c</field>
+        <field>kk_recruiting__VacancyCandidate__c.kk_recruiting__Approved__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>VacancyCandidate__c.Approved__c</field>
+        <field>kk_recruiting__VacancyCandidate__c.kk_recruiting__Processed__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>VacancyCandidate__c.Processed__c</field>
+        <field>kk_recruiting__VacancyCandidate__c.kk_recruiting__UniqueID__c</field>
         <readable>true</readable>
     </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>VacancyCandidate__c.UniqueID__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <pageAccesses>
-        <apexPage>colorTest</apexPage>
-        <enabled>false</enabled>
-    </pageAccesses>
     <tabVisibilities>
-        <tab>Candidate__c</tab>
+        <tab>kk_recruiting__Candidate__c</tab>
         <visibility>Hidden</visibility>
     </tabVisibilities>
     <tabVisibilities>
-        <tab>Candidates_Approval</tab>
+        <tab>kk_recruiting__Candidates_Approval</tab>
         <visibility>Hidden</visibility>
     </tabVisibilities>
     <tabVisibilities>
-        <tab>Propose_Candidates</tab>
+        <tab>kk_recruiting__Propose_Candidates</tab>
         <visibility>Hidden</visibility>
     </tabVisibilities>
     <tabVisibilities>
-        <tab>Recruiting_home_page</tab>
+        <tab>kk_recruiting__Recruiting_home_page</tab>
         <visibility>DefaultOn</visibility>
     </tabVisibilities>
     <tabVisibilities>
-        <tab>Vacancy__c</tab>
+        <tab>kk_recruiting__Vacancy__c</tab>
         <visibility>DefaultOn</visibility>
     </tabVisibilities>
     <userLicense>Salesforce Platform</userLicense>
