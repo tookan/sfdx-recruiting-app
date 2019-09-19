@@ -7,7 +7,6 @@ import listRecords from "@salesforce/apex/VacancyCandidateController.listRecords
 import acceptApprovals from "@salesforce/apex/VacancyCandidateController.acceptApprovals";
 import rejectApprovals from "@salesforce/apex/VacancyCandidateController.rejectApprovals";
 import {ShowToastEvent} from 'lightning/platformShowToastEvent';
-import {refreshApex} from '@salesforce/apex';
 
 export default class ManagerApprovalPage extends LightningElement {
 
@@ -15,8 +14,9 @@ export default class ManagerApprovalPage extends LightningElement {
     @track selectedRecordsId = [];
     @track searchTerm = '';
     @track isSubmitButtonsRendered = false;
+    requestIndex = 0;
 
-    @wire(listRecords, {searchTerm: '$searchTerm', pageCurrent: 1})
+    @wire(listRecords, {searchTerm: '$searchTerm', pageCurrent: 1, requestIndex: '$requestIndex'})
     load(result) {
         this.rawRecordsData = result;
         if (result.data) {
@@ -26,8 +26,9 @@ export default class ManagerApprovalPage extends LightningElement {
         result.error && console.warn(result.error);
     }
 
-    refreshData() {
-        return refreshApex(this.rawRecordsData);
+    forceListRecords()
+    {
+        this.requestIndex++;
     }
 
     get isHasResults() {
@@ -127,7 +128,7 @@ export default class ManagerApprovalPage extends LightningElement {
             })
             .finally(() => {
                 this.selectedRecordsId = [];
-                this.refreshData();
+                this.forceListRecords();
                 this.checkRenderOptions();
             });
     }

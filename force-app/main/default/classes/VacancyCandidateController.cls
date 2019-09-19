@@ -2,7 +2,7 @@ public with sharing class VacancyCandidateController {
 
 
     @AuraEnabled(Cacheable=true)
-    public static String listRecords(String searchTerm, Integer pageCurrent) {
+    public static String listRecords(String searchTerm, Integer pageCurrent, Integer requestIndex) {
         RequestHelper requestHelper = new VacancyCandidateRequestHelper();
         return CustomObjectController.executeListRecords(searchTerm, pageCurrent, requestHelper);
     }
