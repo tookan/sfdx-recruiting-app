@@ -2,14 +2,15 @@
 /* eslint-disable no-console */
 /* eslint-disable @lwc/lwc/no-async-operation */
 /* eslint-disable no-unused-expressions */
-import {LightningElement, track, wire, api} from 'lwc';
+import {track, wire, api} from 'lwc';
 import listRecords from '@salesforce/apex/CandidateController.listRecords';
+import AbstractList from 'c/abstractList';
 
-export default class vacancyList extends LightningElement {
+export default class vacancyList extends AbstractList {
 
     @track searchTerm = '';
     @track candidateList = [];
-    requestIndex = 0;
+
     $selectedRecordsId;
 
     @api
@@ -31,24 +32,6 @@ export default class vacancyList extends LightningElement {
     load({data, error}) {
         data && (this.candidateList = JSON.parse(data).pageData);
         error && console.warn(error);
-        this.checkSelected();
-    }
-
-    forceListRecords()
-    {
-        this.requestIndex++;
-    }
-
-    handleCandidateSearch(event) {
-
-        window.clearTimeout(this.delaySearchInputProcessing);
-
-        const delayedSearchTerm = event.target.value;
-
-        this.delaySearchInputProcessing = setTimeout(() => {
-            this.searchTerm = delayedSearchTerm;
-        }, 300);
-
         this.checkSelected();
     }
 

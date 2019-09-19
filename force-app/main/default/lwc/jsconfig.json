@@ -23,6 +23,9 @@
             ],
             "c/vacancyTile": [
                 "vacancyTile/vacancyTile.js"
+            ],
+            "c/abstractList": [
+                "abstractList/abstractList.js"
             ]
         }
     },

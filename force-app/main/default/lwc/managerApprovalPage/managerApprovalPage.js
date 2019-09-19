@@ -2,20 +2,20 @@
 /* eslint-disable no-console */
 /* eslint-disable @lwc/lwc/no-async-operation */
 /* eslint-disable no-unused-expressions */
-import {LightningElement, wire, track} from 'lwc';
+import {wire, track} from 'lwc';
 import listRecords from "@salesforce/apex/VacancyCandidateController.listRecords";
 import acceptApprovals from "@salesforce/apex/VacancyCandidateController.acceptApprovals";
 import rejectApprovals from "@salesforce/apex/VacancyCandidateController.rejectApprovals";
 import {ShowToastEvent} from 'lightning/platformShowToastEvent';
+import AbstractList from 'c/abstractList';
 
-export default class ManagerApprovalPage extends LightningElement {
+export default class ManagerApprovalPage extends AbstractList {
 
     @track vacCanList = [];
     @track selectedRecordsId = [];
     @track searchTerm = '';
     @track isSubmitButtonsRendered = false;
-    requestIndex = 0;
-
+  
     @wire(listRecords, {searchTerm: '$searchTerm', pageCurrent: 1, requestIndex: '$requestIndex'})
     load(result) {
         this.rawRecordsData = result;
@@ -26,15 +26,6 @@ export default class ManagerApprovalPage extends LightningElement {
         result.error && console.warn(result.error);
     }
 
-    forceListRecords()
-    {
-        this.requestIndex++;
-    }
-
-    get isHasResults() {
-        return this.vacCanList.length > 0;
-    }
-
     get isAnyRecordsChosen() {
         return this.selectedRecordsId.length > 0;
     }
@@ -42,20 +33,6 @@ export default class ManagerApprovalPage extends LightningElement {
     checkRenderOptions()
     {
         this.isSubmitButtonsRendered = this.isAnyRecordsChosen;
-    }
-
-    handleSearch(event) {
-
-        window.clearTimeout(this.delaySearchInputProcessing);
-
-        const delayedSearchTerm = event.target.value;
-
-        
-        this.delaySearchInputProcessing = setTimeout(() => {
-            this.searchTerm = delayedSearchTerm;
-        }, 300);
-        
-        this.checkRenderOptions();
     }
 
     handleRecordChose(event) {
