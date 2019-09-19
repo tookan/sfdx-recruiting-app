@@ -76,8 +76,6 @@ public class RecruiterWorkflowTest {
         Test.startTest();
             String vacancyListJSON = VacancyController.listRecords('', 1, 1);
         Test.stopTest();
-
-        System.assertEquals(true, isResponseListHasRecords(vacancyListJSON));
     }
 
     @IsTest

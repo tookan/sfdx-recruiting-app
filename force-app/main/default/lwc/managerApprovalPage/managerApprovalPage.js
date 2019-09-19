@@ -93,10 +93,10 @@ export default class ManagerApprovalPage extends AbstractList {
         apexMethod({vacCanJSON: JSON.stringify(payload)})
             .then(response => {
                 response = JSON.parse(response);
-                if (response["success"] !== "false" && response["errors"]) {
+                if (response["success"] ===  true) {
                     this.showSuccessToast();
                 } 
-                if(response.errors.length) {
+                if(Object.keys(response.errors).length) {
                     // eslint-disable-next-line guard-for-in
                     for (const key in response.errors) { 
                         this.showErrorToast(key, response.errors[key][0]);

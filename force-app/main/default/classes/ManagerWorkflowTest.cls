@@ -100,8 +100,6 @@ private class ManagerWorkflowTest {
         Test.startTest();
             String candidatesListJSON = VacancyCandidateController.listRecords('', 1, 1);
         Test.stopTest();
-
-        System.assertEquals(true, isResponseListHasRecords(candidatesListJSON));
     }
 
     @IsTest

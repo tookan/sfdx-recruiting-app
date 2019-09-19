@@ -32,7 +32,7 @@ public class RecruitingObjectsFactory {
             newVac.Title__c = MOCK_VACANCY_TITLE;
             newVac.StartDate__c = Date.newInstance(2019, 9, 22);
             newVac.Level__c = 'd0';
-            newVac.Status__c = 'In-Process';
+            newVac.Status__c = 'New';
             newVac.VacancyOwner__c = vacncyOwnerId;
             newVac.OwnerId = ownerId;
 

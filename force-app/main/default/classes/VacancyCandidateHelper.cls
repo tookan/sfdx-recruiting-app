@@ -1,8 +1,8 @@
 public with sharing class VacancyCandidateHelper {
 
-    static final String VAC_CAN_DUPLICATE = 'Vacancy/Candidate already approved with another Candidate/Vacancy';
-    static final String ACTION_APPROVE = 'Approve';
-    static final String ACTION_REJECT = 'Reject';
+    public static final String VAC_CAN_DUPLICATE = 'Vacancy/Candidate already approved with another Candidate/Vacancy';
+    public static final String ACTION_APPROVE = 'Approve';
+    public static final String ACTION_REJECT = 'Reject';
     public static Map<String, List<String>> errorMap = new Map<String, List<String>>();
 
     public static List<VacancyCandidate__c> filterValidateDuplicates(List<VacancyCandidate__c> vacCanList) {
@@ -46,29 +46,40 @@ public with sharing class VacancyCandidateHelper {
         update vacanciesList;
     }
 
-
-    public static Approval.ProcessResult processApprovalWorkItem(String action, ProcessInstanceWorkitem workItem) {
-        Approval.ProcessWorkitemRequest req = new Approval.ProcessWorkitemRequest();
-        req.setAction(action);
-        req.setWorkitemId(workItem.Id);
-
-        return Approval.process(req);
+    public static void markVacancyCandiadatesAsProcessed(List<VacancyCandidate__c> vacCanList)
+    {
+        for(VacancyCandidate__c vacCan : vacCanList)
+        {
+            vacCan.Processed__c = true;
+        }
+        update vacCanList;
     }
 
 
-    public static void acceptVacancyCandidateApprovals(VacancyCandidate__c[] vacCanIdList) {
+    public static  List<Approval.ProcessResult> processVacancyCandidateApprovals(String action, List<VacancyCandidate__c> vacCanTargetList) {
 
         List<ProcessInstanceWorkitem> instanceWorkitems = [
                 SELECT Id
                 FROM ProcessInstanceWorkitem
-                WHERE ProcessInstance.TargetObjectId IN :vacCanIdList
+                WHERE ProcessInstance.TargetObjectId IN :vacCanTargetList
         ];
 
+        List<Approval.ProcessResult> approvalResults = new List<Approval.ProcessResult>();
+
         for (ProcessInstanceWorkitem instanceWorkitem : instanceWorkitems) {
-            processApprovalWorkItem(ACTION_APPROVE, instanceWorkitem);
+            Approval.ProcessWorkitemRequest req = new Approval.ProcessWorkitemRequest();
+            req.setAction(action);
+            req.setWorkitemId(instanceWorkitem.Id);
+            approvalResults.add(Approval.process(req));
         }
+
+        return approvalResults;
     }
 
+    /**
+     * reject pending approval requests 
+     * that related to already processed
+     */
     public static void cleanupVacancyCandidateApprovals(VacancyCandidate__c[] vacCanList) {
 
         List<String> vacanciesIdList = new List<String>();
@@ -85,20 +96,9 @@ public with sharing class VacancyCandidateHelper {
                 WHERE Id NOT IN :vacCanList
                 AND (Vacancy__c IN :vacanciesIdList OR Candidate__c IN :candidatesIdList)
         ];
-
-        rejectVacancyCandidateApprovals(vacCanTargetList);
-    }
-
-    public static void rejectVacancyCandidateApprovals(List<VacancyCandidate__c> vacCanTargetList) {
-        List<ProcessInstanceWorkitem> instanceWorkitems = [
-                SELECT Id
-                FROM ProcessInstanceWorkitem
-                WHERE ProcessInstance.TargetObjectId IN :vacCanTargetList
-        ];
-
-        for (ProcessInstanceWorkitem instanceWorkitem : instanceWorkitems) {
-            processApprovalWorkItem(ACTION_REJECT, instanceWorkitem);
-        }
+    
+        processVacancyCandidateApprovals(ACTION_REJECT, vacCanTargetList);
+        markVacancyCandiadatesAsProcessed(vacCanTargetList);
     }
 
     public static void addDuplicateError(VacancyCandidate__c vacCan) {

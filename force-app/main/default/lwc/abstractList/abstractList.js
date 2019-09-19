@@ -2,7 +2,7 @@
 /* eslint-disable no-console */
 /* eslint-disable @lwc/lwc/no-async-operation */
 /* eslint-disable no-unused-expressions */
-import { LightningElement, api } from 'lwc';
+import { LightningElement } from 'lwc';
 
 export default class AbstractList extends LightningElement {
 
@@ -13,7 +13,7 @@ export default class AbstractList extends LightningElement {
 
     forceListRecords()
     {
-        this.requestIndex = parseInt((''+Date.now()).substr(-1, 5), 10);
+        this.requestIndex = parseInt((''+Date.now()).substr(-5, 5), 10);
     }
 
     handleSearch(event) {

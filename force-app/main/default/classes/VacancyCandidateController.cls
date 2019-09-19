@@ -16,7 +16,8 @@ public with sharing class VacancyCandidateController {
 
         if(VacancyCandidateHelper.errorMap.isEmpty()){
             
-            VacancyCandidateHelper.acceptVacancyCandidateApprovals(cleanVacCanList);
+            VacancyCandidateHelper.processVacancyCandidateApprovals(VacancyCandidateHelper.ACTION_APPROVE, vacCanList);
+            VacancyCandidateHelper.markVacancyCandiadatesAsProcessed(vacCanList);
             VacancyCandidateHelper.cleanupVacancyCandidateApprovals(cleanVacCanList);
         }
 
@@ -29,7 +30,8 @@ public with sharing class VacancyCandidateController {
     public static String rejectApprovals(String vacCanJSON)
     {
        List<VacancyCandidate__c> vacCanList = getObjectListFromIdJSON(vacCanJSON);
-        VacancyCandidateHelper.rejectVacancyCandidateApprovals(vacCanList);
+        VacancyCandidateHelper.processVacancyCandidateApprovals(VacancyCandidateHelper.ACTION_REJECT, vacCanList);
+        VacancyCandidateHelper.markVacancyCandiadatesAsProcessed(vacCanList);
         return '{"success":true,"errors":[]}';
     }
 
@@ -37,7 +39,7 @@ public with sharing class VacancyCandidateController {
     {
         List<String> vacCanIdList = (List<String>) JSON.deserialize(vacCanJSON, List<String>.class);
         return [
-                SELECT Id, Vacancy__c, Candidate__c
+                SELECT Id, Vacancy__c, Candidate__c, Processed__c
                 FROM VacancyCandidate__c
                 WHERE Id IN :vacCanIdList
         ];
