@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Candidate_should_be_validated_by_hr</fullName>
-    <active>true</active>
+    <active>false</active>
     <errorConditionFormula>TEXT( Candidate__r.Status__c ) &lt;&gt; &#39;Validated by HR&#39;</errorConditionFormula>
     <errorMessage>Only candidates validated by HR available for proposal</errorMessage>
 </ValidationRule>

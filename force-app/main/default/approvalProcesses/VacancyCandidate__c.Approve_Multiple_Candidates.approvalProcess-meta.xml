@@ -45,18 +45,8 @@
             <name>Update_Approved_to_True</name>
             <type>FieldUpdate</type>
         </action>
-        <action>
-            <name>Update_processed</name>
-            <type>FieldUpdate</type>
-        </action>
     </finalApprovalActions>
     <finalApprovalRecordLock>true</finalApprovalRecordLock>
-    <finalRejectionActions>
-        <action>
-            <name>Update_processed</name>
-            <type>FieldUpdate</type>
-        </action>
-    </finalRejectionActions>
     <finalRejectionRecordLock>false</finalRejectionRecordLock>
     <initialSubmissionActions>
         <action>

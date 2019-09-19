@@ -45,25 +45,25 @@
         <name>LightningComponentBundle</name>
     </types>
     <types>
-        <members>*</members>
-        <name>StaticResource</name>
-    </types>
-    <types>
         <members>User</members>
         <members>VacancyCandidate__c</members>
         <members>Candidate__c</members>
         <name>CustomObject</name>
     </types>
     <types>
-        <members>*</members>
+        <members>Lead_Manager</members>
+        <members>Recruiting_Manager</members>
+        <members>Recruiter</members>
         <name>Role</name>
     </types>
     <types>
-        <members>*</members>
+        <members>Recruiter</members>
+        <members>Recruiting Manager</members>
+        <members>Lead Manager</members>
         <name>Profile</name>
     </types>
     <types>
-        <members>*</members>
+        <members>Vacancy__c</members>
         <name>SharingRules</name>
     </types>
     <types>
