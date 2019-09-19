@@ -30,6 +30,11 @@ export default class ManagerApprovalPage extends AbstractList {
         return this.selectedRecordsId.length > 0;
     }
 
+    get isHasResults()
+    {
+        return this.vacCanList.length > 0;
+    }
+
     checkRenderOptions()
     {
         this.isSubmitButtonsRendered = this.isAnyRecordsChosen;
