@@ -1,7 +1,7 @@
-/**
- * Created by kkukh on 9/6/2019.
- */
-
+/* eslint-disable dot-notation */
+/* eslint-disable no-console */
+/* eslint-disable @lwc/lwc/no-async-operation */
+/* eslint-disable no-unused-expressions */
 import {LightningElement, track, wire, api} from 'lwc';
 import listRecords from '@salesforce/apex/CandidateController.listRecords';
 
@@ -9,6 +9,7 @@ export default class vacancyList extends LightningElement {
 
     @track searchTerm = '';
     @track candidateList = [];
+    requestIndex = 0;
     $selectedRecordsId;
 
     @api
@@ -26,14 +27,16 @@ export default class vacancyList extends LightningElement {
         return this.candidateList.length > 0;
     }
 
-    @wire(listRecords, {searchTerm: '$searchTerm', pageCurrent: 1})
+    @wire(listRecords, {searchTerm: '$searchTerm', pageCurrent: 1, requestIndex: '$requestIndex'})
     load({data, error}) {
-        // eslint-disable-next-line no-unused-expressions
         data && (this.candidateList = JSON.parse(data).pageData);
-        // eslint-disable-next-line no-console
         error && console.warn(error);
-
         this.checkSelected();
+    }
+
+    forceListRecords()
+    {
+        this.requestIndex++;
     }
 
     handleCandidateSearch(event) {
@@ -55,7 +58,7 @@ export default class vacancyList extends LightningElement {
 
         const chosenIndex = this.$selectedRecordsId.indexOf(event.detail);
 
-        if (chosenIndex != -1) {
+        if (chosenIndex !== -1) {
             this.$selectedRecordsId.splice(chosenIndex, 1);
         } else {
             this.$selectedRecordsId.push(chosenId);
@@ -77,7 +80,7 @@ export default class vacancyList extends LightningElement {
     checkSelected()
     {
         this.candidateList.map(entry => {
-            entry['isSelected'] = (this.$selectedRecordsId.indexOf(entry.Id) != -1);
+            entry['isSelected'] = (this.$selectedRecordsId.indexOf(entry.Id) !== -1);
             return entry;
         });
     }

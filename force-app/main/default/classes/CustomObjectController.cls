@@ -2,7 +2,7 @@ global class CustomObjectController  {
 
     public static final Integer PAGE_SIZE = 50;
     public static final Integer SEARCH_TERM_MIN_LENGTH = 3;
-//
+
     public static String executeListRecords(String searchTerm, Integer pageCurrent, RequestHelper requestHelper) {
         Integer skipRecordsCount = PAGE_SIZE * (pageCurrent - 1);
         Integer takeRecordsCount = PAGE_SIZE;

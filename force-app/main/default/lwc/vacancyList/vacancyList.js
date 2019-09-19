@@ -4,13 +4,13 @@
 /* eslint-disable no-unused-expressions */
 import {LightningElement, track, wire, api} from 'lwc';
 import listRecords from '@salesforce/apex/VacancyController.listRecords';
-import {refreshApex} from '@salesforce/apex';
 
 export default class vacancyList extends LightningElement {
 
     @track searchTerm = '';
     @track vacancyList = [];
     @track selectedRecordId;
+    requestIndex = 0;
 
     @api
     get reloadListTrigger() {
@@ -18,10 +18,10 @@ export default class vacancyList extends LightningElement {
     }
 
     set reloadListTrigger(value) {
-        this.reloadRecords();
+        this.forceListRecords();
     }
 
-    @wire(listRecords, {searchTerm: '$searchTerm', pageCurrent: 1})
+    @wire(listRecords, {searchTerm: '$searchTerm', pageCurrent: 1, requestIndex: '$requestIndex'})
     load(response) {
         this.rawRecordsData = response;
         response.data && (this.vacancyList = JSON.parse(response.data).pageData);
@@ -29,11 +29,9 @@ export default class vacancyList extends LightningElement {
         this.checkSelected();
     }
 
-    reloadRecords()
+    forceListRecords()
     {
-        if(this.rawRecordsData.data){
-            refreshApex(this.rawRecordsData);
-        }
+        this.requestIndex++;
     }
 
     get isHasResults() {
@@ -48,7 +46,7 @@ export default class vacancyList extends LightningElement {
 
         this.delaySearchInputProcessing = setTimeout(() => {
             this.searchTerm = delayedSearchTerm;
-            if(this.searchTerm.length === 0) this.reloadRecords();
+            if(this.searchTerm.length === 0) this.forceListRecords();
         }, 300);
     }
 
@@ -70,9 +68,16 @@ export default class vacancyList extends LightningElement {
     }
 
     checkSelected() {
+        let previousSelectedRecordId = this.selectedRecordId;
+        let selectedRecordsCount = 0;
         this.vacancyList.map(entry => {
             entry['isSelected'] = entry.Id === this.selectedRecordId;
+            entry['isSelected'] && selectedRecordsCount++;
             return entry;
         });
+        if(selectedRecordsCount === 0) {
+            this.selectedRecordId = '';
+            if(previousSelectedRecordId !== this.selectedRecordId ) this.handleVacancyChose({detail: ''});
+        }
     }
 }

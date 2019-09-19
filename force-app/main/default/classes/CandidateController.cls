@@ -3,7 +3,7 @@ public with sharing class CandidateController {
     public static final String VALIDATED_BY_HR_STATUS = 'Validated by HR';
 
     @AuraEnabled(Cacheable=true)
-    public static String listRecords(String searchTerm, Integer pageCurrent)
+    public static String listRecords(String searchTerm, Integer pageCurrent, Integer requestIndex)
     {
         RequestHelper requestHelper = new CandidateRequestHelper();
         return CustomObjectController.executeListRecords(searchTerm, pageCurrent, requestHelper);
