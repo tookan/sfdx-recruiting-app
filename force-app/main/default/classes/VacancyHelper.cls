@@ -42,7 +42,11 @@ public with sharing class VacancyHelper {
 
     public VacancyHelper setManagerAsOwner()
     {
-        vacancy.OwnerId = vacancy.VacancyOwner__c;
+        if(vacancy.OwnerId != vacancy.VacancyOwner__c)
+        {
+            vacancy.OwnerId = vacancy.VacancyOwner__c;
+        }
+        
         return this;
     }
 

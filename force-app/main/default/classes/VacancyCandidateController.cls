@@ -16,8 +16,8 @@ public with sharing class VacancyCandidateController {
 
         if(VacancyCandidateHelper.errorMap.isEmpty()){
             
-            VacancyCandidateHelper.processVacancyCandidateApprovals(VacancyCandidateHelper.ACTION_APPROVE, vacCanList);
             VacancyCandidateHelper.markVacancyCandiadatesAsProcessed(vacCanList);
+            VacancyCandidateHelper.processVacancyCandidateApprovals(VacancyCandidateHelper.ACTION_APPROVE, vacCanList);
             VacancyCandidateHelper.cleanupVacancyCandidateApprovals(cleanVacCanList);
         }
 
@@ -30,8 +30,8 @@ public with sharing class VacancyCandidateController {
     public static String rejectApprovals(String vacCanJSON)
     {
        List<VacancyCandidate__c> vacCanList = getObjectListFromIdJSON(vacCanJSON);
+       VacancyCandidateHelper.markVacancyCandiadatesAsProcessed(vacCanList);
         VacancyCandidateHelper.processVacancyCandidateApprovals(VacancyCandidateHelper.ACTION_REJECT, vacCanList);
-        VacancyCandidateHelper.markVacancyCandiadatesAsProcessed(vacCanList);
         return '{"success":true,"errors":[]}';
     }
 
