@@ -43,7 +43,7 @@ public with sharing class VacancyController {
                    kk_recruiting__Level__c,  
                    kk_recruiting__Comments__c,  kk_recruiting__StartDate__c,  
                    kk_recruiting__Status__c, OwnerId, kk_recruiting__SubmitedByRecruiter__c  
-                   WHERE ( Status__c NOT IN  :VacancyHelper.CLOSED_STATUSES))
+                   WHERE ( Status__c NOT IN  :VacancyHelper.CLOSED_STATUSES AND kk_recruiting__SubmitedByRecruiter__c = FALSE))
             ];
 
             List<Vacancy__c> recordsResult = soslResult.get(0);
